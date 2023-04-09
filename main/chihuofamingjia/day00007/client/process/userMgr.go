@@ -2,10 +2,12 @@ package process
 
 import (
 	"fmt"
+	"test/main/chihuofamingjia/day00007/client/model"
 	"test/main/chihuofamingjia/day00007/common/message"
 )
 
 var onlineUsers map[string]*message.User = make(map[string]*message.User)
+var curUser model.CurUser
 
 func updateUsersStatus(status *message.NotifyUserStatus) {
 	user, ok := onlineUsers[status.UserId]

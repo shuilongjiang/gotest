@@ -112,6 +112,9 @@ func (p *UserProcess) Login(userId string, userPwd string) (err error) {
 	if loginRes.Code == 200 {
 		fmt.Println("登录成功！")
 		fmt.Println("在线用户列表！")
+		curUser.UserId = userId
+		curUser.UserName = "name待实现:" + userId
+		curUser.Conn = conn
 		fmt.Println("---------------")
 		for _, v := range loginRes.UsersId {
 			if v == userId {
@@ -122,6 +125,7 @@ func (p *UserProcess) Login(userId string, userPwd string) (err error) {
 				UserId:     v,
 				UserStatus: message.UserOnline,
 			}
+
 			onlineUsers[v] = user
 		}
 		fmt.Println("---------------")

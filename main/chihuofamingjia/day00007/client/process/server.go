@@ -17,12 +17,18 @@ func ShowMenu() {
 	fmt.Println("----------4、退出系统----------")
 	fmt.Println("----------请选择1-4----------")
 	var key int
+
+	smsProcess := SmsProcess{}
+	var content string
 	fmt.Scanf("%d\n", &key)
 	switch key {
 	case 1:
 		outPutOnlineUser()
 	case 2:
-		fmt.Println("")
+
+		fmt.Println("请输入要发送的内容")
+		fmt.Scanf("%s\n", &content)
+		smsProcess.SendGroup(content)
 	case 3:
 		fmt.Println("")
 	case 4:
