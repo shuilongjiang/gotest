@@ -55,6 +55,8 @@ func ServerProcessMes(conn net.Conn) {
 			var notifyMes message.NotifyUserStatus
 			err = json.Unmarshal([]byte(mes.Data), &notifyMes)
 			updateUsersStatus(&notifyMes)
+		case message.SmsMsgType:
+			OutPutGroupMsg(&mes)
 		default:
 			fmt.Println("服务器返回位置消息，", mes)
 		}
