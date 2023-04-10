@@ -68,7 +68,10 @@ func (p *UserProcess) Register(userId, userPwd, userName string) (err error) {
 
 func (p *UserProcess) Login(userId string, userPwd string) (err error) {
 	conn, err := net.Dial("tcp", "127.0.0.1:8889")
-	defer conn.Close()
+	defer func() {
+		fmt.Println("销毁conn")
+		conn.Close()
+	}()
 	if err != nil {
 		fmt.Println("客户端，建立链接失败", err)
 		return err
