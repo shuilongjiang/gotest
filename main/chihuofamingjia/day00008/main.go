@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-
 	fmt.Println("--2222-")
 }
